@@ -24,7 +24,7 @@ main{
     gap: 10px;
 }
 section{
-    align-items: center;
+    width: 100%;
     justify-content: center;
 }
 input{
@@ -68,4 +68,10 @@ td, th{
 }
 thead tr{
     border: none;
+}
+p{
+    display: block;
+    flex-wrap: wrap;
+    width: 250px;
+    text-align: center;
 }
