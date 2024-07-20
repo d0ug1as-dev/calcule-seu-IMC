@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Calcule seu IMC</title>
 </head>
 <body>
     <main>
-        <section class="contaier">
-            <input type="number" name="inputNumPeso" id="inputNumPeso">
-            <input type="text" name="inputNumAltura" id="inputNumAltura">
-            <input type="submit" value="Enviar">
+        <section class="container">
+            <h1>Calcule seu IMC</h1>
+            <form>
+                <label for="inputNumPeso">Peso</label>
+                <input type="number" name="inputNumPeso" id="inputNumPeso" placeholder="Ex: 85">
+                <label for="inputNumAltura">Altura</label>
+                <input type="text" name="inputNumAltura" id="inputNumAltura" placeholder="Ex:1.80">
+                <input type="submit" value="Enviar" id="btnEnviar">
+            </form>
         </section>
-        <aside class="contaier">
+        <aside class="container">
             <table>
                 <thead>
-                    <th>IMC</th>
-                    <th>GRAU</th>
+                    <tr>
+                        <th>IMC</th><th>GRAU</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr><td>... a 18.4</td><td>A Baixo do peso</td></tr>
