@@ -2,56 +2,60 @@ const peso = document.getElementById('inputNumPeso')
 const altura = document.getElementById('inputNumAltura')    
         
 const btnEnviar = document.getElementById('btnEnviar')
-const tagSection = document.getElementById('tester')
+const tagSection = document.getElementById('tagSection')
+
+const menssagem = document.getElementById('menssagem')
 
 let getPeso;
 let getAltura;
 let getOperacao;
 
-function pesoAltura(){
+const msnErro = "É preciso que digite os campos corretamente"
+let msnResposta;
+
+function getPesoAltura(){
         getPeso = Number.parseInt(peso.value)
         getAltura = Number.parseFloat(altura.value)
 }
-
-function validacao(){
-/* Validanco campos vazio */
-if(peso.value !== "" && peso.value !== "0" && altura.value !== "" && altura.value !== "0"){
-    pesoAltura()
-    operacao()
-}else{
-        criaTag("É preciso que preencha os campos corretamente ")
-    }
-}
-
-function criaTag(msmFinal){
-    const tagP = document.createElement('p')
-    tagP.textContent=`${msmFinal}`
-    tagP.style.color='red'
-    tagSection.appendChild(tagP)
-}
+/* função que faz a operação de calculo do IMC */
 function operacao(){
-    getOperacao = getPeso / (getAltura * getAltura)
-    console.log(getOperacao.toFixed(1))
+   let getOperacao = getPeso / (getAltura * getAltura)
+    return getOperacao.toFixed(1)
 }
-
-peso.addEventListener('blur', function(){
-    if(peso.value == "" || peso.value == 0){
-        peso.style.border = "1px solid red"
+/* validação que muda a cor da borda ao tira o foco do campo vazio */
+function styleRed(numOpe){
+    if(numOpe.value == "" || numOpe.value == 0){
+        numOpe.style.border = "1px solid red"
     }else{
-        peso.style.border = ""
+        numOpe.style.border = ""
     }
-})
-altura.addEventListener('blur', function(){
-    if(altura.value == "" || altura.value == 0){
-        altura.style.border = "1px solid red"
+}
+/* menssagem  de resposta no html */
+function msm(getMsn, getColor){
+    menssagem.innerText = getMsn
+    menssagem.style.color= getColor
+}
+/* Validação de campos vazio */
+function validacao(){
+    if(peso.value !== "" && peso.value !== "0" && altura.value !== "" && altura.value !== "0"){
+        getPesoAltura()
+        operacao()
+        msm(`Seu IMC é de: ${operacao()}`, 'white')
+        menssagem.style.fontSize="1.5rem"
+        getOperacao = operacao()
     }else{
-        altura.style.border = ""
+        peso.value = ""
+        altura.value = ""
+        styleRed(peso)
+        styleRed(altura)
+        msm(msnErro, 'red')
+        }
     }
-})
+/* validação que muda a cor da borda ao tira o foco do campo vazio */
+peso.addEventListener('blur', function(){styleRed(peso)})
+altura.addEventListener('blur', function(){styleRed(altura)})
 
-btnEnviar.addEventListener('click', function(e){
-    validacao()
-
-
+btnEnviar.addEventListener("click", function(e){
     e.preventDefault()
+    validacao()
 })

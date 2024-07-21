@@ -61,7 +61,7 @@ tr{
     border: 1px solid #fff;
 }
 td, th{
-    width: 120px;
+    width: 140px;
     padding: 6px;
     height: fit-content;
     
@@ -73,5 +73,10 @@ p{
     display: block;
     flex-wrap: wrap;
     width: 250px;
+    text-align: center;
+}
+#menssagem{
+    display: 100%;
+    margin-top: 20px;
     text-align: center;
 }

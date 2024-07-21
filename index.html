@@ -8,15 +8,16 @@
 </head>
 <body>
     <main>
-        <section class="container " id="tester">
+        <section class="container " id="tagSection">
             <h1>Calcule seu IMC</h1>
             <form>
                 <label for="inputNumPeso">Peso</label>
                 <input type="number" name="inputNumPeso" id="inputNumPeso" placeholder="Ex: 85">
                 <label for="inputNumAltura">Altura</label>
-                <input type="text" name="inputNumAltura" id="inputNumAltura" placeholder="Ex:1.80">
+                <input type="number" name="inputNumAltura" id="inputNumAltura" placeholder="Ex:1.80">
                 <input type="submit" value="Enviar" id="btnEnviar">
             </form>
+            <div id="menssagem"></div>
         </section>
         <aside class="container">
             <table>
@@ -31,7 +32,7 @@
                     <tr><td>25,0 a 29,9</td><td>Sobre Peso</td></tr>
                     <tr><td>30,0 a 34,9</td><td>Obsidade</td></tr>
                     <tr><td>35,0 a 39,9</td><td>Obsidade Grave</td></tr>
-                    <tr><td>40 a ...</td><td>Acima do peso</td></tr>
+                    <tr><td>40 a ...</td><td>Obsidade Morbida</td></tr>
                 </tbody>
             </table>
         </aside>
