@@ -46,13 +46,14 @@ function msm(getMsn, getColor){
 }
 /* Validação de campos vazio */
 function validacaoCampo(){
-    if(peso.value !== "" && peso.value !== "0" && altura.value !== "" && altura.value !== "0"){
-        getPesoAltura()
+    if(peso.value !== "" && peso.value >=1 && altura.value !== "" && altura.value >=1){
         operacao()
+        getPesoAltura()
+        getOperacao = operacao()
+       if(getOperacao >=1){ 
         msm(`Seu IMC é de: ${operacao()}`, 'white')
         menssagem.style.fontSize="1.5rem"
-        getOperacao = operacao()
-        validacaoGrau()
+        validacaoGrau()}
     }else{
         menssagem.style.fontSize="1rem"
         limpaCampos()
