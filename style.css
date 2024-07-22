@@ -32,6 +32,9 @@ input{
     height: 30px;
     text-align: center;
 }
+input[type="number"]::-webkit-inner-spin-button {
+    display: none;
+  }
 #btnEnviar{
     width: 200px;
     margin: 0 auto;
