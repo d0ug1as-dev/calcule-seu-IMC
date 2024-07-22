@@ -3,9 +3,18 @@ const altura = document.getElementById('inputNumAltura')
         
 const btnEnviar = document.getElementById('btnEnviar')
 const tagSection = document.getElementById('tagSection')
+const getTabLinha = document.querySelectorAll('.getTabLinha')
 
 const menssagem = document.getElementById('menssagem')
 
+const linhasTabela = {
+    baixoPeso: getTabLinha[0],
+    pesoIdeal: getTabLinha[1],
+    sobrePeso: getTabLinha[2],
+    obsidade: getTabLinha[3],
+    obesidadeGrave: getTabLinha[4],
+    obsidadeMorbida: getTabLinha[5],
+}
 let getPeso;
 let getAltura;
 let getOperacao;
@@ -36,13 +45,14 @@ function msm(getMsn, getColor){
     menssagem.style.color= getColor
 }
 /* Validação de campos vazio */
-function validacao(){
+function validacaoCampo(){
     if(peso.value !== "" && peso.value !== "0" && altura.value !== "" && altura.value !== "0"){
         getPesoAltura()
         operacao()
         msm(`Seu IMC é de: ${operacao()}`, 'white')
         menssagem.style.fontSize="1.5rem"
         getOperacao = operacao()
+        validacaoGrau()
     }else{
         peso.value = ""
         altura.value = ""
@@ -51,11 +61,25 @@ function validacao(){
         msm(msnErro, 'red')
         }
     }
+    function validacaoGrau(){
+        if(getOperacao < 18.4){
+            linhasTabela.baixoPeso.style.border='1px solid red'
+        }else if(getOperacao >= 18.5 && getOperacao <= 24.9){
+            linhasTabela.pesoIdeal.style.border='1px solid blue'
+        }else if(getOperacao >= 25.0 && getOperacao <= 29.9){
+            linhasTabela.sobrePeso.style.border='1px solid red'
+        }else if(getOperacao >= 30.0 && getOperacao <= 34.9){
+            linhasTabela.obsidade.style.border='1px solid red'
+        }else if(getOperacao >= 35.0 && getOperacao <= 39.9){
+            linhasTabela.obesidadeGrave.style.border='1px solid red'
+        }else if(getOperacao > 40){
+            linhasTabela.obsidadeMorbida.style.border='1px solid red'}
+        }
 /* validação que muda a cor da borda ao tira o foco do campo vazio */
 peso.addEventListener('blur', function(){styleRed(peso)})
 altura.addEventListener('blur', function(){styleRed(altura)})
 
 btnEnviar.addEventListener("click", function(e){
     e.preventDefault()
-    validacao()
+    validacaoCampo()
 })
