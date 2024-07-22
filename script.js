@@ -54,8 +54,8 @@ function validacaoCampo(){
         getOperacao = operacao()
         validacaoGrau()
     }else{
-        peso.value = ""
-        altura.value = ""
+        menssagem.style.fontSize="1rem"
+        limpaCampos()
         styleRed(peso)
         styleRed(altura)
         msm(msnErro, 'red')
@@ -63,17 +63,33 @@ function validacaoCampo(){
     }
     function validacaoGrau(){
         if(getOperacao < 18.4){
+            limpaCampos()
             linhasTabela.baixoPeso.style.border='1px solid red'
         }else if(getOperacao >= 18.5 && getOperacao <= 24.9){
+            limpaCampos()
             linhasTabela.pesoIdeal.style.border='1px solid blue'
         }else if(getOperacao >= 25.0 && getOperacao <= 29.9){
+            limpaCampos()
             linhasTabela.sobrePeso.style.border='1px solid red'
         }else if(getOperacao >= 30.0 && getOperacao <= 34.9){
+            limpaCampos()
             linhasTabela.obsidade.style.border='1px solid red'
         }else if(getOperacao >= 35.0 && getOperacao <= 39.9){
+            limpaCampos()
             linhasTabela.obesidadeGrave.style.border='1px solid red'
         }else if(getOperacao > 40){
+            limpaCampos()
             linhasTabela.obsidadeMorbida.style.border='1px solid red'}
+        }
+        function limpaCampos(){
+            peso.value = ""
+            altura.value = ""
+            linhasTabela.baixoPeso.style.border='1px solid white'
+            linhasTabela.pesoIdeal.style.border='1px solid white'
+            linhasTabela.sobrePeso.style.border='1px solid white'
+            linhasTabela.obsidade.style.border='1px solid white'
+            linhasTabela.obesidadeGrave.style.border='1px solid white'
+            linhasTabela.obsidadeMorbida.style.border='1px solid white'
         }
 /* validação que muda a cor da borda ao tira o foco do campo vazio */
 peso.addEventListener('blur', function(){styleRed(peso)})
