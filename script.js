@@ -18,13 +18,24 @@ const linhasTabela = {
 let getPeso;
 let getAltura;
 let getOperacao;
+let validaAltua;
 
 const msnErro = "É preciso que digite os campos corretamente"
 let msnResposta;
 
 function getPesoAltura(){
-        getPeso = Number.parseInt(peso.value)
-        getAltura = Number.parseFloat(altura.value)
+        validaAltua = altura.value
+        getPeso = peso.value
+        if(validaAltua.includes('.')){
+            validaAltua = `${validaAltua.slice(0, 1)}${validaAltua.slice(1)}`
+            getAltura = validaAltua
+            return
+        }
+        if(!validaAltua.includes('.') && !validaAltua.includes(',')){
+            validaAltua = `${validaAltua.slice(0, 1)}.${validaAltua.slice(1)}`
+            getAltura = validaAltua
+            return
+        }
 }
 /* função que faz a operação de calculo do IMC */
 function operacao(){
